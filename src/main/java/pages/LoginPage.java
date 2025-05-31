@@ -21,7 +21,7 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//button[text()='Y’alla!']")
     WebElement btnYalla;
 
-    public void tyoeLoginForm(String email, String password){
+    public void typeLoginForm(String email, String password){
         inputEmail.sendKeys(email);
         inputPassword.sendKeys(password);
         btnYalla.click();

@@ -12,7 +12,7 @@ public class LoginTests extends ApplicationManager {
         HomePage homePage = new HomePage(getDriver());
         homePage.clickBtnLoginHeader();
         LoginPage loginPage = new LoginPage(getDriver());
-        loginPage.tyoeLoginForm("mamon300396@gmail.com","Ercbdn300396$");
+        loginPage.typeLoginForm("mamon300396@gmail.com","Ercbdn300396$");
 
     }
 }
