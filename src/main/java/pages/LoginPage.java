@@ -21,7 +21,7 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//button[text()='Y’alla!']")
     WebElement btnYalla;
 
-    @FindBy(xpath = "//div[@class='dialog-contaner']")
+    @FindBy(xpath = "//div[@class='dialog-container']")
     WebElement popUpMessage;
 
     @FindBy(xpath = "//div[text()=' Password is required ']")
