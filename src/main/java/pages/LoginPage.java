@@ -21,11 +21,25 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//button[text()='Y’alla!']")
     WebElement btnYalla;
 
+    @FindBy(xpath = "//div[@class='dialog-contaner']")
+    WebElement popUpMessage;
+
+    @FindBy(xpath = "//div[text()=' Password is required ']")
+    WebElement messageErrorPassword;
+
     public void typeLoginForm(String email, String password){
         inputEmail.sendKeys(email);
         inputPassword.sendKeys(password);
         btnYalla.click();
 
+    }
+
+    public boolean validatePopUpMessage(String text){
+        return isTextInElementPresent(popUpMessage, text);
+    }
+
+    public boolean validateMessageErrorPassword(){
+        return isElementPresent(messageErrorPassword);
     }
 
 }
