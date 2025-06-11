@@ -21,8 +21,7 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//button[text()='Y’alla!']")
     WebElement btnYalla;
 
-    @FindBy(xpath = "//div[@class='dialog-container']")
-    WebElement popUpMessage;
+
 
     @FindBy(xpath = "//div[text()=' Password is required ']")
     WebElement messageErrorPassword;
@@ -32,10 +31,6 @@ public class LoginPage extends BasePage{
         inputPassword.sendKeys(password);
         btnYalla.click();
 
-    }
-
-    public boolean validatePopUpMessage(String text){
-        return isTextInElementPresent(popUpMessage, text);
     }
 
     public boolean validateMessageErrorPassword(){
