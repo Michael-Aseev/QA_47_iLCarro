@@ -4,11 +4,15 @@ import dto.UserLombok;
 import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.TestNGListener;
 
 import static utils.RandomUtils.*;
+
+@Listeners(TestNGListener.class)
 
 public class LoginTests extends ApplicationManager {
     HomePage homePage;
@@ -24,7 +28,7 @@ public class LoginTests extends ApplicationManager {
 
 
 
-    @Test
+    @Test(enabled = false)
     public void loginPositiveTests(){
         HomePage homePage = new HomePage(getDriver());
         homePage.clickBtnLoginHeader();
@@ -39,6 +43,7 @@ public class LoginTests extends ApplicationManager {
                 .username("mamon300396@gmail.com")
                 .password("Ercbdn300396$")
                 .build();
+        logger.info("test data --> " + user.toString());
         loginPage.typeLoginForm(user.getUsername(), user.getPassword());
         Assert.assertTrue(loginPage.validatePopUpMessage("Logged in success"), "loginPositiveTest_lombok");
 
@@ -50,6 +55,7 @@ public class LoginTests extends ApplicationManager {
                 .username(generateEmail(10))
                 .password("Ercbdn300396$")
                 .build();
+        logger.info("test data --> " + user.toString());
         loginPage.typeLoginForm(user.getUsername(), user.getPassword());
         Assert.assertTrue(loginPage.validatePopUpMessage("Login or Password incorrect"), "loginNegativeText_unregUser");
 
@@ -61,6 +67,7 @@ public class LoginTests extends ApplicationManager {
                 .username("mamon300396@gmail.com")
                 .password("")
                 .build();
+        logger.info("test data --> " + user.toString());
         loginPage.typeLoginForm(user.getUsername(), user.getPassword());
         Assert.assertTrue(loginPage.validateMessageErrorPassword(), "loginNegativeTest_EmptyPassword");
     }

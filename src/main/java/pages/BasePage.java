@@ -45,7 +45,7 @@ public abstract class BasePage {
                 return (T) new SignUpPage(driver);
             }
             case LET_CAR_WORK -> {
-                return (T) new LetTheCarWorkPage(driver);
+                return (T) new LetCarWorkPage(driver);
             }
             default -> throw new IllegalArgumentException("Invalid parameter headerMenuItem");
         }
@@ -54,7 +54,7 @@ public abstract class BasePage {
 
 
     public boolean isTextInElementPresent(WebElement element, String text) {
-        return element.isDisplayed();
+        return element.getText().contains(text);
     }
 
     public boolean isElementPresent(WebElement element) {
