@@ -16,7 +16,7 @@ public abstract class BasePage {
     @FindBy(xpath = "//div[@class='dialog-container']")
     WebElement popUpMessage;
 
-    public boolean validatePopUpMessage(String text){
+    public boolean validatePopUpMessage(String text) {
         return isTextInElementPresent(popUpMessage, text);
     }
 
@@ -52,7 +52,6 @@ public abstract class BasePage {
 
     }
 
-
     public boolean isTextInElementPresent(WebElement element, String text) {
         return element.getText().contains(text);
     }
@@ -60,7 +59,8 @@ public abstract class BasePage {
     public boolean isElementPresent(WebElement element) {
         return element.isDisplayed();
     }
-    public boolean elementIsEnabled(WebElement element){
+
+    public boolean elementIsEnabled(WebElement element) {
         return element.isEnabled();
     }
 

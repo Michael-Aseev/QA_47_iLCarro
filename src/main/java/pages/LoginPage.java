@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
-public class LoginPage extends BasePage{
-    public LoginPage(WebDriver driver){
+public class LoginPage extends BasePage {
+    public LoginPage(WebDriver driver) {
         setDriver(driver);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
     }
@@ -21,19 +21,17 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//button[text()='Y’alla!']")
     WebElement btnYalla;
 
-
-
     @FindBy(xpath = "//div[text()=' Password is required ']")
     WebElement messageErrorPassword;
 
-    public void typeLoginForm(String email, String password){
+    public void typeLoginForm(String email, String password) {
         inputEmail.sendKeys(email);
         inputPassword.sendKeys(password);
         btnYalla.click();
 
     }
 
-    public boolean validateMessageErrorPassword(){
+    public boolean validateMessageErrorPassword() {
         return isElementPresent(messageErrorPassword);
     }
 
