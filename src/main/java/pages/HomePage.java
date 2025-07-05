@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,13 @@ public class HomePage extends BasePage {
     WebElement inputCity;
     @FindBy(id = "dates")
     WebElement inputDates;
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement btnYalla;
+
+
+    //========= calendar =========
+    @FindBy(xpath = "//button[@aria-label='Choose month and year']")
+    WebElement btnMonthYear;
 
     public void clickBtnLoginHeader() {
         btnLoginHeader.click();
@@ -31,11 +39,33 @@ public class HomePage extends BasePage {
 
     public void typeSearchForm(String city, LocalDate starDate, LocalDate endDate) {
         inputCity.sendKeys(city);
-        inputDates.sendKeys(dateToString(starDate) + " / " + dateToString(endDate));
+        inputDates.sendKeys(dateToString(starDate) + " - " + dateToString(endDate));
+        removeDisabledBtnSearch();
+        btnYalla.click();
     }
 
     private String dateToString(LocalDate date) {
-        return (date.getMonthValue()) + "/" + date.getDayOfMonth() + "/" + date.getYear();
+        return (date.getMonthValue()) + "/" + date.getDayOfMonth() + "-" + date.getYear();
+    }
+
+    public void typeSearchFormCalendar(String city, LocalDate starDate, LocalDate endDate) {
+        inputCity.sendKeys(city);
+        inputDates.click();
+        typeYearMonthDay(starDate);
+        typeYearMonthDay(endDate);
+        removeDisabledBtnSearch();
+        btnYalla.click();
+    }
+
+    private void typeYearMonthDay(LocalDate date) {
+        btnMonthYear.click();
+        String year = Integer.toString(date.getYear());
+        driver.findElement(By.xpath("//div[contains(text(),'"+year+"')]")).click();
+        String month = date.getMonth().toString();
+        System.out.println(month.substring(0,3));
+        driver.findElement(By.xpath("//div[contains(text(),'"+month.substring(0,3) +"')]")).click();
+        String day = String.valueOf(date.getDayOfMonth());
+        driver.findElement(By.xpath("//div[contains(text(),'"+day+"')]")).click();
     }
 
 }
