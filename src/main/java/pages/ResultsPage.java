@@ -8,6 +8,7 @@ public class ResultsPage extends BasePage{
 
         public ResultsPage(WebDriver driver) {
             setDriver(driver);
-            PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
+            PageFactory.initElements(
+                    new AjaxElementLocatorFactory(driver, 10), this);
         }
 }

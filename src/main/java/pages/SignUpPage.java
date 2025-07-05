@@ -13,7 +13,8 @@ import java.util.List;
 public class SignUpPage extends BasePage {
     public SignUpPage(WebDriver driver) {
         setDriver(driver);
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
+        PageFactory.initElements(
+                new AjaxElementLocatorFactory(driver, 10), this);
     }
 
     @FindBy(id = "name")

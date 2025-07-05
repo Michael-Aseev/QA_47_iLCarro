@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import utils.PropertiesReader;
 
 import java.time.LocalDate;
 
@@ -13,8 +14,10 @@ public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
         setDriver(driver);
-        driver.get("https://ilcarro.web.app/search");
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
+       // driver.get("https://ilcarro.web.app/search");
+        driver.get(PropertiesReader.getProperty("start.properties", "baseUrl"));
+        PageFactory.initElements(
+                new AjaxElementLocatorFactory(driver, 10), this);
     }
 
     @FindBy(xpath = "//a[text()= 'Log in' ]")
@@ -37,6 +40,7 @@ public class HomePage extends BasePage {
         btnLoginHeader.click();
     }
 
+    //     7/10/2025 - 8/30/2025
     public void typeSearchForm(String city, LocalDate starDate, LocalDate endDate) {
         inputCity.sendKeys(city);
         inputDates.sendKeys(dateToString(starDate) + " - " + dateToString(endDate));

@@ -9,6 +9,7 @@ public enum Fuel {
     private final String value;
 
     Fuel(String value) {
+
         this.value = value;
     }
 

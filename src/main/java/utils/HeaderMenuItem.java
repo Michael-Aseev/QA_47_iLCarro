@@ -7,10 +7,14 @@ public enum HeaderMenuItem {
     SIGN_UP("//a[text()=' Sign up ']"),
     LOGIN("//a[text()=' Log in ']");
     private final String locator;
-    HeaderMenuItem(String locator){
+
+    HeaderMenuItem(String locator) {
+
         this.locator = locator;
     }
-    public String getLocator(){
+
+    public String getLocator() {
+
         return locator;
     }
 }

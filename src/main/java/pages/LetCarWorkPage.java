@@ -13,7 +13,8 @@ import java.io.File;
 public class LetCarWorkPage extends BasePage {
     public LetCarWorkPage(WebDriver driver) {
         setDriver(driver);
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
+        PageFactory.initElements(
+                new AjaxElementLocatorFactory(driver, 10), this);
     }
 
     @FindBy(id = "pickUpPlace")
